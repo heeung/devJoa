@@ -12,6 +12,7 @@ import com.ssafy.devJoa.databinding.FragmentJoinBinding
 import com.ssafy.devJoa.databinding.FragmentLoginBinding
 
 class JoinFragment : Fragment() {
+    
     private var _binding: FragmentJoinBinding? = null
     private val binding get() = _binding!!
 
