@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.ssafy.devJoa'
+    namespace 'com.devJoa'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.ssafy.devJoa"
+        applicationId "com.devJoa"
         minSdk 24
         targetSdk 33
         versionCode 1
