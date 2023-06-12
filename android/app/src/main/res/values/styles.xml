@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textViewStyle">@style/CustomTextViewFontStyle</item>
+        <item name="android:buttonStyle">@style/CustomButtonFontStyle</item>
+        <item name="android:editTextStyle">@style/CustomEditTextFontStyle</item>
+    </style>
+    
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+
+    </style>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomTextViewFontStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/my_font</item>
+    </style>
+
+    <style name="CustomButtonFontStyle" parent="Widget.AppCompat.Button">
+        <item name="android:fontFamily">@font/my_font</item>
+    </style>
+
+    <style name="CustomEditTextFontStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:fontFamily">@font/my_font</item>
+    </style>
+</resources>

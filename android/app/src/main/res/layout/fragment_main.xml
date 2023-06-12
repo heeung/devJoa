@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="180dp"
         android:text="개발자들이\n좋아하는\n아이템"
         android:textColor="@color/black"
         android:textSize="42sp"

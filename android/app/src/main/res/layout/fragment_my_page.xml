@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myPage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profile_page_top"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/profile_image_c"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:cardCornerRadius="10dp"
+                android:layout_margin="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" >
+
+                <ImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/outline_person_outline_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <LinearLayout
+                android:layout_width="290dp"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/profile_image_c"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nick_name_tv"
+                        style="@style/CustomTextViewFontStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:text="개발자"
+                        android:textColor="#4B4B4B"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/job_group_tv"
+                        style="@style/CustomTextViewFontStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="MOBILE"
+                        android:textColor="#4B4B4B"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/job_year_tv"
+                        style="@style/CustomTextViewFontStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="JUNIOR"
+                        android:textColor="#4B4B4B"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/github_id_tv"
+                        style="@style/CustomTextViewFontStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/follow_toggle"
+                        style="@style/CustomTextViewFontStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/login_radius_button"
+                        app:tint="@color/sky_blue_color"
+                        android:paddingHorizontal="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="follow" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/CustomTextViewFontStyle"
+                                android:text="팔로워"/>
+
+                            <TextView
+                                android:id="@+id/follower_tv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textAlignment="center"/>
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/CustomTextViewFontStyle"
+                                android:text="팔로잉"/>
+
+                            <TextView
+                                android:id="@+id/following_tv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:text="0"/>
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/modify_btn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/baseline_settings_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/sky_blue_color" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/profile_page_layout"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_page_top">
+
+            <TextView
+                style="@style/CustomTextViewFontStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="사용중인 아이템"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/myItem"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/loginpage_login_radius_button">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                style="@style/CustomTextViewFontStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="좋아하는 마우스"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/liked_mouse"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/loginpage_login_radius_button">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                style="@style/CustomTextViewFontStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="좋아하는 키보드"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/liked_keyboard"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/loginpage_login_radius_button">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                style="@style/CustomTextViewFontStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="좋아하는 모니터"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/liked_monitor"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/loginpage_login_radius_button">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                style="@style/CustomTextViewFontStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="좋아하는 소프트웨어"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/liked_program"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/loginpage_login_radius_button">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                style="@style/CustomTextViewFontStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="좋아하는 스탠드"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/liked_stand"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/loginpage_login_radius_button">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="400dp"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:background="@drawable/login_radius_button"
+    android:orientation="vertical"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        app:cardCornerRadius="40dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity=""
+            android:scaleType="centerCrop"
+            android:src="@drawable/outline_person_outline_24" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutCompat2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="center">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/modify_btn"
+            style="@style/CustomTextViewFontStyle"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/login_radius_button_blue"
+            android:text="프로필 편집"
+            android:textColor="#F1F1F1" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancel_button"
+            style="@style/CustomTextViewFontStyle"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/join_radius_button"
+            android:text="취소" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</LinearLayout>

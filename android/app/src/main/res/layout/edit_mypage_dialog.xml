@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/login_radius_button"
+    android:id="@+id/bottom_drawer_nav">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginVertical="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/CustomTextViewFontStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:text="아이디"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/id_textfield"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            app:errorEnabled="true"
+            app:counterMaxLength="15"
+            app:counterEnabled="true"
+            android:background="@drawable/textfield_background"
+            android:hint="">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/id_edit_textfield"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textfield_background" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            style="@style/CustomTextViewFontStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="비밀번호"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_textfield"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            app:errorEnabled="true"
+            app:counterMaxLength="15"
+            app:counterEnabled="true"
+            android:background="@drawable/textfield_background"
+            android:hint="">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_edit_textfield"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textfield_background" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            style="@style/CustomTextViewFontStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="비밀번호 확인"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_check_textfield"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            app:errorEnabled="true"
+            app:counterMaxLength="15"
+            app:counterEnabled="true"
+            android:background="@drawable/textfield_background"
+            android:hint="">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_edit_check_textfield"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textfield_background" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            style="@style/CustomTextViewFontStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="닉네임"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nickname_textfield"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            app:errorEnabled="true"
+            app:counterMaxLength="15"
+            app:counterEnabled="true"
+            android:background="@drawable/textfield_background"
+            android:hint="">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nickname_edit_textfield"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textfield_background" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            style="@style/CustomTextViewFontStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="깃허브 아이디"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/github_id_textfield"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            app:errorEnabled="true"
+            app:counterMaxLength="15"
+            app:counterEnabled="true"
+            android:background="@drawable/textfield_background"
+            android:hint="">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/github_id_edit_textfield"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textfield_background" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            style="@style/CustomTextViewFontStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="직군"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:checkedButton="@+id/radio_btn_1"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_btn_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="모바일" />
+
+                <RadioButton
+                    android:id="@+id/radio_btn_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="백엔드" />
+
+                <RadioButton
+                    android:id="@+id/radio_btn_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="프론트" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_btn_4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="기타" />
+            </LinearLayout>
+        </RadioGroup>
+
+        <TextView
+            style="@style/CustomTextViewFontStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="커리어 레벨"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="20dp"
+            android:checkedButton="@+id/level_radio_btn_4"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+            <LinearLayout
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/level_radio_btn_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="주니어" />
+
+                <RadioButton
+                    android:id="@+id/level_radio_btn_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="미들" />
+
+                <RadioButton
+                    android:id="@+id/level_radio_btn_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="시니어" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/level_radio_btn_4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="없음" />
+            </LinearLayout>
+        </RadioGroup>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginBottom="15dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/modify_btn"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/login_radius_button_blue"
+                android:text="수정하기"
+                style="@style/CustomTextViewFontStyle"
+                android:textColor="#F1F1F1"
+                android:layout_marginBottom="20dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cancel_button"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/join_radius_button"
+                android:text="취소"
+                android:layout_marginRight="10dp"
+                style="@style/CustomTextViewFontStyle"
+                android:layout_marginBottom="20dp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
+</ScrollView>
