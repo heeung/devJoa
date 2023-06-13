@@ -49,10 +49,10 @@ class MainActivity : AppCompatActivity() {
             "login" -> {
                 supportFragmentManager.beginTransaction()
                     .setCustomAnimations(
-                        R.anim.fade_in,
-                        R.anim.fade_out,
-                        R.anim.fade_in,
-                        R.anim.fade_out
+                        R.anim.enter_from_right,
+                        R.anim.exit_to_left,
+                        R.anim.enter_from_left,
+                        R.anim.exit_to_right
                     )
                     .replace(R.id.fragment_frame, LoginFragment())
                     .addToBackStack(null)
