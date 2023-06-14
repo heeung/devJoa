@@ -21,4 +21,6 @@
     <color name="orange_color">#FFB555</color>
 
     <color name="my_blue">#4981EF</color>
+
+    <color name="transparent">#00000000</color>
 </resources>

@@ -1,7 +1,9 @@
 package com.devJoa
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.devJoa.config.ApplicationClass.Companion.sharedPreferencesUtil
@@ -15,6 +17,7 @@ import com.devJoa.page.login.MainFragment
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
