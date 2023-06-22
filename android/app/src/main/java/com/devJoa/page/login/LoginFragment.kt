@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.devJoa.MainActivity
 import com.devJoa.R
 import com.devJoa.config.ApplicationClass
 import com.devJoa.databinding.FragmentLoginBinding
@@ -22,7 +23,7 @@ class LoginFragment : Fragment() {
 
     private val loginViewModel: LoginViewModel by activityViewModels()
 
-    lateinit var mActivity: com.devJoa.MainActivity
+    lateinit var mActivity: MainActivity
 
     private var isLoginTextFilled = false
     private var isPasswordTextFilled = false
@@ -48,7 +49,10 @@ class LoginFragment : Fragment() {
 
         registerObserver()
         resisterEditTextChangeListener()
+        init()
+    }
 
+    private fun init() {
         binding.loginBtn.apply {
             isEnabled = false
             setBackgroundResource(R.drawable.join_radius_button)
@@ -74,7 +78,7 @@ class LoginFragment : Fragment() {
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 })
             } else { //실패
-                mActivity.showToast("id 혹은 password를 확인해주세요.")
+//                mActivity.showToast("id 혹은 password를 확인해주세요.")
             }
         }
     }

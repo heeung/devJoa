@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.DevJoa" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/sky_blue_color_darker</item>
+        <item name="colorPrimary">@color/my_blue</item>
         <item name="colorPrimaryVariant">@color/sky_blue_color</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/sky_blue_color</item>
-        <item name="colorSecondaryVariant">@color/sky_blue_color_darker</item>
+        <item name="colorSecondaryVariant">@color/my_blue</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/grey_background_color</item>
