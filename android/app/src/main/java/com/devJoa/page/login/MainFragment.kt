@@ -50,7 +50,7 @@ class MainFragment : Fragment() {
     private fun changeTitleColor() {
         val spannableStringBuilder = SpannableStringBuilder("개발자들이\n조아하는\n아이템")
         spannableStringBuilder.apply{
-            val color = ContextCompat.getColor(mActivity, R.color.butter_color_more)
+            val color = ContextCompat.getColor(mActivity, R.color.my_blue)
             setSpan(ForegroundColorSpan(color), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
             setSpan(ForegroundColorSpan(color), 6, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
             setSpan(ForegroundColorSpan(color), 11, 12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)

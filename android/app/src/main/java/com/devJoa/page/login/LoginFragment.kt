@@ -4,15 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableStringBuilder
-import android.text.style.ForegroundColorSpan
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.devJoa.MainActivity
 import com.devJoa.R
 import com.devJoa.config.ApplicationClass
 import com.devJoa.databinding.FragmentLoginBinding
@@ -24,7 +23,10 @@ class LoginFragment : Fragment() {
 
     private val loginViewModel: LoginViewModel by activityViewModels()
 
-    lateinit var mActivity: com.devJoa.MainActivity
+    lateinit var mActivity: MainActivity
+
+    private var isLoginTextFilled = false
+    private var isPasswordTextFilled = false
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -38,23 +40,6 @@ class LoginFragment : Fragment() {
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
-//        // 화면 다른 곳 클릭시 포커스 빼기 대응
-//        binding.root.setOnTouchListener { _, event ->
-//            if (event.action == MotionEvent.ACTION_DOWN) {
-//                val currentFocus = activity?.currentFocus
-//                if (currentFocus is EditText) {
-//                    val outRect = Rect()
-//                    currentFocus.getGlobalVisibleRect(outRect)
-//                    if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
-//                        currentFocus.clearFocus()
-//                        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//                        imm.hideSoftInputFromWindow(currentFocus.windowToken, 0)
-//                    }
-//                }
-//            }
-//            false
-//        }
-
         return binding.root
     }
 
@@ -62,21 +47,28 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        changeTitleColor()
         registerObserver()
+        resisterEditTextChangeListener()
+        init()
+    }
 
-        binding.loginBtn.setOnClickListener {
-            val userId = binding.IDEdit.text.toString()
-            val password = binding.passwordEdit.text.toString()
-            loginViewModel.login(userId, password)
+    private fun init() {
+        binding.loginBtn.apply {
+            isEnabled = false
+            setBackgroundResource(R.drawable.join_radius_button)
+            setOnClickListener {
+                val userId = binding.IDEdit.text.toString()
+                val password = binding.passwordEdit.text.toString()
+                loginViewModel.login(userId, password)
+            }
         }
 
-        binding.joinBtn.setOnClickListener {
-            mActivity.changeFragment("join")
+        binding.backBtn.setOnClickListener {
+            parentFragmentManager.popBackStack()
         }
     }
 
-    fun registerObserver() {
+    private fun registerObserver() {
         loginViewModel.user.observe(viewLifecycleOwner) {
             if (it.userId.isNotEmpty()) { //성공
                 mActivity.showToast("로그인 되었습니다.")
@@ -86,24 +78,68 @@ class LoginFragment : Fragment() {
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 })
             } else { //실패
-                mActivity.showToast("id 혹은 password를 확인해주세요.")
+//                mActivity.showToast("id 혹은 password를 확인해주세요.")
             }
+        }
+    }
+
+    private fun resisterEditTextChangeListener() {
+        binding.IDEdit.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(str: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                when(str?.isEmpty()) {
+                     true -> {
+                        isLoginTextFilled = false
+                         changeButtonToggle()
+                    }
+                    else -> {
+                        isLoginTextFilled = true
+                        changeButtonToggle()
+                    }
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+        })
+
+        binding.passwordEdit.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(str: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                when(str?.isEmpty()) {
+                    true -> {
+                        isPasswordTextFilled = false
+                        changeButtonToggle()
+                    }
+                    else -> {
+                        isPasswordTextFilled = true
+                        changeButtonToggle()
+                    }
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        })
+    }
+
+    private fun changeButtonToggle() {
+        if (isLoginTextFilled && isPasswordTextFilled) {
+            binding.loginBtn.setBackgroundResource(R.drawable.login_radius_button)
+            binding.loginBtn.isEnabled = true
+        } else {
+            binding.loginBtn.setBackgroundResource(R.drawable.join_radius_button)
+            binding.loginBtn.isEnabled = false
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun changeTitleColor() {
-        val spannableStringBuilder = SpannableStringBuilder("개발자들이\n조아하는\n아이템")
-        spannableStringBuilder.apply{
-            val color = ContextCompat.getColor(mActivity, R.color.butter_color_more)
-            setSpan(ForegroundColorSpan(color), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            setSpan(ForegroundColorSpan(color), 6, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            setSpan(ForegroundColorSpan(color), 11, 12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            binding.titleTv2.text = spannableStringBuilder
-        }
     }
 }

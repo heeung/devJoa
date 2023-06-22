@@ -1,7 +1,9 @@
 package com.devJoa
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.devJoa.config.ApplicationClass.Companion.sharedPreferencesUtil
@@ -15,6 +17,7 @@ import com.devJoa.page.login.MainFragment
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -49,10 +52,10 @@ class MainActivity : AppCompatActivity() {
             "login" -> {
                 supportFragmentManager.beginTransaction()
                     .setCustomAnimations(
-                        R.anim.fade_in,
-                        R.anim.fade_out,
-                        R.anim.fade_in,
-                        R.anim.fade_out
+                        R.anim.enter_from_right,
+                        R.anim.exit_to_left,
+                        R.anim.enter_from_left,
+                        R.anim.exit_to_right
                     )
                     .replace(R.id.fragment_frame, LoginFragment())
                     .addToBackStack(null)

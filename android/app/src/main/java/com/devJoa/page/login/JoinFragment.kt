@@ -30,6 +30,10 @@ class JoinFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var jobGroup = "MOBILE"
+    private var idFilledCheck = false
+    private var passFilledCheck = false
+    private var passcheckFilledCheck = false
+    private var nicknameFilledCheck = false
     lateinit var mActivity: com.devJoa.MainActivity
     private var isIdChecked = false
 
@@ -38,29 +42,13 @@ class JoinFragment : Fragment() {
         mActivity = context as com.devJoa.MainActivity
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentJoinBinding.inflate(inflater, container, false)
 
-        // 화면 다른 곳 클릭시 포커스 빼기 대응
-        binding.root.setOnTouchListener { _, event ->
-            if (event.action == MotionEvent.ACTION_DOWN) {
-                val currentFocus = activity?.currentFocus
-                if (currentFocus is EditText) {
-                    val outRect = Rect()
-                    currentFocus.getGlobalVisibleRect(outRect)
-                    if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
-                        currentFocus.clearFocus()
-                        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                        imm.hideSoftInputFromWindow(currentFocus.windowToken, 0)
-                    }
-                }
-            }
-            false
-        }
+        outFocus()
 
         return binding.root
     }
@@ -69,10 +57,15 @@ class JoinFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        changeButtonToggle()
+        resisterEditTextChangeListener()
         settingRadioBtn()
         checkValid()
         checkIDValid()
+        init()
+    }
 
+    private fun init() {
         binding.joinBtn.setOnClickListener {
             if (isIdChecked == false) {
                 mActivity.showToast("아이디 중복확인 버튼을 눌러주세요.")
@@ -94,18 +87,31 @@ class JoinFragment : Fragment() {
                 val userId = binding.IDEditTextfield.text.toString()
                 val pass = binding.passwordEditTextfield.text.toString()
                 val nick = binding.editNickName.text.toString()
+                val githubId = binding.githubIdEditTextfield.text.toString()
 
-                CoroutineScope(Dispatchers.IO).launch {
-                    RetrofitUtil.userService.inserUser(User(userId, pass, nick, jobGroup))
-                    withContext(Dispatchers.Main) {
-                        mActivity.changeFragment("main")
+                if (githubId.isEmpty()) {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        RetrofitUtil.userService.inserUser(User(userId, pass, nick, jobGroup))
+                        withContext(Dispatchers.Main) {
+                            mActivity.changeFragment("main")
+                        }
+                    }
+                } else {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        RetrofitUtil.userService.inserUser(User(userId, pass, nick, jobGroup, githubId))
+                        withContext(Dispatchers.Main) {
+                            mActivity.changeFragment("main")
+                        }
                     }
                 }
             }
         }
+        binding.backBtn.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
     }
 
-    fun checkIDValid() {
+    private fun checkIDValid() {
         binding.idCheckBtn.setOnClickListener {
             if (binding.IDEditTextfield.text.toString().isEmpty()) { //아이디 칸 비었을 떄
                 binding.IDTextfield.error = "Invalid input"
@@ -136,7 +142,7 @@ class JoinFragment : Fragment() {
         }
     }
 
-    fun checkValid(): Boolean {
+    private fun checkValid(): Boolean {
         binding.IDEditTextfield.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -184,7 +190,106 @@ class JoinFragment : Fragment() {
         return true
     }
 
-    fun settingRadioBtn() {
+    private fun changeButtonToggle() {
+        if (passFilledCheck && idFilledCheck && passcheckFilledCheck && nicknameFilledCheck) {
+            binding.joinBtn.setBackgroundResource(R.drawable.login_radius_button)
+            binding.joinBtn.isEnabled = true
+        } else {
+            binding.joinBtn.setBackgroundResource(R.drawable.join_radius_button)
+            binding.joinBtn.isEnabled = false
+        }
+    }
+
+    private fun resisterEditTextChangeListener() {
+        binding.IDEditTextfield.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(str: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                when (str?.isEmpty()) {
+                    true -> {
+                        idFilledCheck = false
+                        changeButtonToggle()
+                    }
+                    else -> {
+                        idFilledCheck = true
+                        changeButtonToggle()
+                    }
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+        })
+
+        binding.passwordEditTextfield.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(str: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                when (str?.isEmpty()) {
+                    true -> {
+                        passFilledCheck = false
+                        changeButtonToggle()
+                    }
+                    else -> {
+                        passFilledCheck = true
+                        changeButtonToggle()
+                    }
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        })
+
+        binding.passwordCheckEditTextfield.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(str: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                when (str?.isEmpty()) {
+                    true -> {
+                        passcheckFilledCheck = false
+                        changeButtonToggle()
+                    }
+                    else -> {
+                        passcheckFilledCheck = true
+                        changeButtonToggle()
+                    }
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        })
+
+        binding.editNickName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(str: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                when (str?.isEmpty()) {
+                    true -> {
+                        nicknameFilledCheck = false
+                        changeButtonToggle()
+                    }
+                    else -> {
+                        nicknameFilledCheck = true
+                        changeButtonToggle()
+                    }
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        })
+    }
+
+    private fun settingRadioBtn() {
         binding.radioBtn1.setOnClickListener {
             binding.radioBtn1.isChecked = true
             binding.radioBtn2.isChecked = false
@@ -214,6 +319,25 @@ class JoinFragment : Fragment() {
             binding.radioBtn3.isChecked = false
             binding.radioBtn4.isChecked = true
             jobGroup = "ETC"
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun outFocus() {
+        binding.root.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                val currentFocus = activity?.currentFocus
+                if (currentFocus is EditText) {
+                    val outRect = Rect()
+                    currentFocus.getGlobalVisibleRect(outRect)
+                    if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
+                        currentFocus.clearFocus()
+                        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(currentFocus.windowToken, 0)
+                    }
+                }
+            }
+            false
         }
     }
 
